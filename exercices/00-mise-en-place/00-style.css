@@ -1,0 +1,37 @@
+/* 🐶 Ajoute toutes les variables ici */
+
+html {
+  font-size: 12px;
+  font-family: Roboto, sans-serif;
+}
+
+/* 🐶 à partir de la taille minimale d'écran de 480px passe la font-size dans html à 14px */
+
+body {
+  background: /* 🐶  variable : couleur du background */ ;
+  /* 🐶   couleur de texte blanc (pas de variable) */
+  margin: 0;
+}
+a {
+  /* 🐶 enlève la décoration du texte par default */
+  /* 🐶  met color:inherit pour avoir la couleur de l'élément parent */
+}
+
+h2 {
+  font-size: /* 🐶 variable : une taille de font digne d'un titre !*/ ;
+  font-weight: 700;
+  margin: 0;
+  line-height: calc(var(--font-size-corps) + 0.5rem);
+}
+
+span {
+  font-size:  /* 🐶 variable : une taille de font pour le corps de texte */ ;
+  color:  /* 🐶 variable : couleur du texte !*/ ;
+}
+
+/* 🐶 à partir de la taille minimale d'écran de 480px 
+passe la font-size dans le h2 à la variable corps de texte */
+
+.icon {
+  height: 20px;
+}

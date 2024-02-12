@@ -25,25 +25,6 @@ html {
   }
 }
 
-::-webkit-scrollbar {
-  width: 5px;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--color-white-a3);
-  border-radius: 10px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: white;
-}
-* {
-  scrollbar-width: 5px;
-  scrollbar-color: var(--color-white-a3) transparent;
-}
 body {
   background: var(--color-background);
   color: white;
@@ -54,7 +35,7 @@ a {
   color: inherit;
 }
 
-h3 {
+h2 {
   font-size: var(--font-size-title);
   font-weight: 700;
   margin: 0;
@@ -67,7 +48,7 @@ span {
 }
 
 @media screen and (min-width: 480px) {
-  h3 {
+  h2 {
     font-size: var(--font-size-corps);
   }
 }
