@@ -47,21 +47,33 @@ span {
   color: var(--color-corps-text);
 }
 
-@media screen and (min-width: 480px) {
-  h2 {
-    font-size: var(--font-size-corps);
-  }
-}
-
 .icon {
   height: 20px;
 }
 
+@media screen and (min-width: 480px) {
+  h2 {
+    font-size: var(--font-size-corps);
+  }
+  .icon {
+    height: 25px;
+  }
+}
+
+/* 🏁
+
+START HEADER EXERCICE
+
+🏁 */
+
 header {
-  /* position: fixed;
-  display: flex;
-  left: 0; */
-  /* top: 0; */
+  /* 
+   🐶 Le header possède une position fixe
+    indique ton intention d'avoir le conteneur collé en haut à gauche
+    à l'aide des propritétés left et top
+    Ah et on est sur un conteneur flex !
+  */
+
   height: 56px;
   width: 100%;
   box-sizing: border-box;
@@ -109,23 +121,22 @@ header {
     height: 35px;
   }
   header {
-    /* position: fixed; */
-    /* width: calc(100% - 5rem);
-    left: 5rem; */
-  }
-
-  .icon {
-    height: 25px;
-  }
-  .search-icon {
-    display: none;
+    /* 
+    🐶 la width du header est de 100% moins 5rem (utilise calc) 
+    déplace le conteneur de 5rem sur la gauche pour laisser un peu d'espace à gauche
+    */
   }
 }
 
 @media screen and (min-width: 768px) {
   header {
-    width: calc(100% - 240px);
-    left: 240px;
+    /* 
+    🐶 la width du header est de 100% moins 240px (utilise calc) 
+    déplace le conteneur de 240px sur la gauche pour laisser un peu d'espace à gauche
+    */
+  }
+  .search-icon {
+    display: none;
   }
   .desktop-search-header {
     display: flex;
@@ -134,11 +145,12 @@ header {
     justify-content: center;
   }
   .desktop-search-header input {
-    border: 1px solid var(--color-white-a1);
-    background: var(--color-white-a);
-    color: white;
-    padding: 0.75rem 1.25rem;
-    border-radius: 20px 0px 0px 20px;
+    /* 
+    🐶 Notre input possède un border solid de 1px avec la variable de couleur  --color-white-a1 
+    la couleur du texte est blanc
+    on a un padding horizontal (droite et gauche) de 1.25rem et vertical (haut, bas) de 0.75rem
+    Ajoute un peu de rondeur avec un border radius uniquement sur les coins en haut à gauche et en bas à gauche de 20px
+    */
     width: 70%;
     max-width: 350px;
   }
@@ -179,11 +191,27 @@ header {
   }
 }
 
+/* ⚠️
+
+
+END HEADER EXERCICE
+le reste du code est dédié à l'exercice 1.2 pour la tagbar
+
+⚠️ */
+
+/* 🏁
+
+START TAGBAR EXERCICE
+
+🏁 */
+
 .tag-bar {
-  /* position: fixed;
-  display: flex;
-  left: 0;
-  top: 56px; */
+  /* 
+   🐶 La tagbar possède une position fixe
+    indique ton intention d'avoir le conteneur collé à gauche
+    nous voulons avoir notre tagbar juste en dessous du header sachant que notre header fait 56px de hauteur
+    Comme pour le header on est sur un conteneur flex !
+  */
   height: 56px;
   width: 100%;
   box-sizing: border-box;
@@ -192,14 +220,18 @@ header {
   gap: var(--gap-small);
   padding-inline: 1rem;
   z-index: 2;
+  border-top: 1px solid var(--color-white-a2);
+  border-bottom: 1px solid var(--color-white-a2);
 }
 
 .tag-content {
-  /* display: flex; */
-  /* align-items: center; */
-  /* gap: var(--gap-small); */
-  /* overflow-y: auto; */
-  /* mask-image: linear-gradient(90deg, rgba(0, 0, 0, 1) 80%, transparent 95%); */
+  /*
+   🐶 on est sur un conteneur flex qui possède un alignement horizontal centré
+    le gap entre les éléments prend la variable (--gap-small)
+    pour gerer le scroll horizontal on va agir sur l'axe Y
+    donc passons l'overflow-y sur une valeur automatique pour passer en scroll si le contenu dépasse du conteneur
+  */
+  /*🏆 Challenge toi et cherche comment obtenir l'effet de fondu sur la droite */
 }
 
 .tag-content span {
@@ -211,36 +243,32 @@ header {
   cursor: pointer;
 }
 
-/* .tag-content span:hover {
-  background: var(--color-white-a2);
+.tag-content span:hover {
+  /* 🐶 Lors du survol je souhaite avoir un background possédant la variable --color-white-a2 */
 }
 
 .tag-content span:active {
-  background: var(--color-white-a3);
+  /* 🐶 Lors du clique je souhaite avoir un background possédant la variable --color-white-a3 */
 }
 .tag-content span:focus {
-  background: white;
-  color: black;
+  /* 🐶 
+    Une fois cliqué le background passe en blanc avec un texte noir 
+  */
 }
 
 .tag-content span:nth-child(2) {
   background: white;
   color: black;
-} */
+}
 
 @media screen and (min-width: 480px) {
   .tag-bar {
     width: calc(100% - 5rem);
     left: 5rem;
+    border: none;
   }
 }
 
-@media screen and (max-width: 480px) {
-  .tag-bar {
-    border-top: 1px solid var(--color-white-a2);
-    border-bottom: 1px solid var(--color-white-a2);
-  }
-}
 @media screen and (min-width: 768px) {
   .tag-bar {
     width: calc(100% - 240px);

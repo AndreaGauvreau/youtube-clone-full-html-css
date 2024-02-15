@@ -25,6 +25,26 @@ html {
   }
 }
 
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-white-a3);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: white;
+}
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-white-a3) transparent;
+}
+
 body {
   background: var(--color-background);
   color: white;
@@ -202,6 +222,10 @@ header {
   gap: var(--gap-small);
   overflow-y: auto;
   mask-image: linear-gradient(90deg, rgba(0, 0, 0, 1) 80%, transparent 95%);
+  scrollbar-width: none;
+}
+.tag-content::-webkit-scrollbar {
+  display: none;
 }
 
 .tag-content span {
@@ -247,4 +271,169 @@ header {
 
 .content-section {
   min-height: 300dvh;
+  padding-top: 40vh;
 }
+
+.loader {
+  height: 32px;
+  width: 32px;
+  animation: loader 4.8s linear infinite;
+  margin-inline: auto;
+  margin-block: 50px;
+}
+
+@keyframes loader {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.loader span {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  height: 32px;
+  width: 32px;
+  clip: rect(0, 32px, 32px, 16px);
+  animation: loaderSpan 1.2s linear infinite;
+}
+
+@keyframes loaderSpan {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(220deg);
+  }
+}
+.loader span::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  height: 32px;
+  width: 32px;
+  clip: rect(0, 32px, 32px, 16px);
+  border: 3px solid #fff;
+  border-radius: 50%;
+  animation: loaderAfter 1.2s cubic-bezier(0.77, 0, 0.175, 1) infinite;
+  box-sizing: border-box;
+}
+
+@keyframes loaderAfter {
+  from {
+    transform: rotate(-140deg);
+  }
+  50% {
+    transform: rotate(-160deg);
+  }
+  to {
+    transform: rotate(140deg);
+  }
+}
+
+/* 🏁
+
+START NAVBAR
+
+🏁 */
+
+.navBar {
+  position: fixed;
+  bottom: 0;
+  /* 
+    🐶 Sur mobile j'aimerais avoir une width relative qui prend toute la largeur.
+    Fait en sorte de centrer verticalement les éléments et d'avoir un espacement horizontal en space-around.
+    Tu te doute bien que nous allons appliquer l'état Flex à notre conteneur.
+    Enfin , met une hauteur de 56px.
+    */
+  background: var(--color-background);
+  z-index: 2;
+}
+.nav-icons-desktop {
+  display: flex;
+  gap: var(--gap-small);
+  margin-bottom: 1rem;
+}
+.navbar-icon-group {
+  width: 100%;
+  /* 
+   🐶  Je vais commencer à être plus flou dans les consignes !
+    Il faut que mon conteneur centre horizontalement mes elements enfants.
+    Ajoute un tout petit espace entre mes éléments (--gap-small)
+    */
+  font-size: var(--font-size-caption);
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.navbar-icon-group:hover {
+  background-color: var(--color-white-a1);
+}
+.navbar-icon-group:active {
+  background-color: var(--color-white-a2);
+}
+@media screen and (min-width: 480px) {
+  .navBar {
+    display: flex;
+    justify-content: flex-start;
+    /* 
+      🐶 Catastrophe ! sur tablette et desktop l'alignement est pas bon ! 
+      Il faudrait passer sur une distribution des éléments en colonne plutot qu'en ligne.
+      tu devrais pouvoir gérer le problème en une ligne de code.
+    */
+    /* 
+      🐶 One more thing,
+      assure toi que notre navbar fasse 100dvh de hauteur afin de toujours remplir l'espace disponible meme sur tablette.
+     */
+    width: 5rem;
+    padding-top: 1rem;
+    top: 0;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .navBar {
+    /* 
+    🐶 sur ordinateur notre nabvar fait désormais 240px de large
+    */
+    align-items: flex-start;
+    padding-left: 1rem;
+    box-sizing: border-box;
+  }
+  .logo-mobile {
+    /* 
+    🐶 Nous avons une duplication de logo, 
+    fait en sorte de faire disparaitre en css le logo mobile
+    */
+  }
+  .navbar-icon-group {
+    font-size: var(--font-size-corps);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .navBar {
+    border-top: 1px solid var(--color-white-a2);
+  }
+  .nav-icons-desktop {
+    display: none;
+  }
+}
+
+/* 
+  🐶 utilise une media querie qui indique que jusqu'à la taille maximal de l'écran de 768px,
+  nous voulons que .logo-desktop n'apparaisse pas et que .navbar-icon-group ne possède pas de gap
+  et possède une distribution des éléments en colonne.
+*/

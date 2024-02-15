@@ -25,6 +25,12 @@ html {
   }
 }
 
+/* 🏁
+
+🐶  appliquer les règles de style de notre scrollbar ici 
+
+🏁 */
+
 body {
   background: var(--color-background);
   color: white;
@@ -196,13 +202,19 @@ header {
   border-bottom: 1px solid var(--color-white-a2);
 }
 
-.tag-content {
+.tagontent {
   display: flex;
   align-items: center;
   gap: var(--gap-small);
   overflow-y: auto;
   mask-image: linear-gradient(90deg, rgba(0, 0, 0, 1) 80%, transparent 95%);
+  /* scrollbar-width: none; */
 }
+/* .tag-content::-webkit-scrollbar {
+  display: none;
+} */
+
+/* 🐶 décommente le code ci-dessus et observe le résultat */
 
 .tag-content span {
   white-space: nowrap;
@@ -247,4 +259,85 @@ header {
 
 .content-section {
   min-height: 300dvh;
+}
+/* ⚠️
+
+END SCROLLBAR EXERCICE
+
+⚠️ */
+
+/* 🏁
+
+START LOADER ANIMATION
+
+🏁 */
+
+.loader {
+  height: 32px;
+  width: 32px;
+  /* 🐶 attribue l'animation loader qui durera 4.8 secondes, 
+  qui s'écoule de manière linéaire à l'infini */
+  margin-inline: auto;
+  margin-block: 50px;
+}
+
+@keyframes loader {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.loader span {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  height: 32px;
+  width: 32px;
+  clip: rect(0, 32px, 32px, 16px);
+  /* 🐶 attribue l'animation loaderSpan qui durera 1.2 secondes, 
+  qui s'écoule de manière linéaire à l'infini */
+}
+
+@keyframes loaderSpan {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(220deg);
+  }
+}
+.loader span::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  height: 32px;
+  width: 32px;
+  clip: rect(0, 32px, 32px, 16px);
+  border: 3px solid #fff;
+  border-radius: 50%;
+  /* 🐶 attribue l'animation loaderSpan qui durera 1.2 secondes, 
+  qui s'écoule avec un cubic-bezier(0.77, 0, 0.175, 1) linéaire à l'infini */
+  box-sizing: border-box;
+}
+
+@keyframes loaderAfter {
+  from {
+    transform: rotate(-140deg);
+  }
+  50% {
+    transform: rotate(-160deg);
+  }
+  to {
+    transform: rotate(140deg);
+  }
 }
